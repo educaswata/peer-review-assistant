@@ -84,8 +84,10 @@ with st.sidebar:
     if "api_key" not in st.session_state or not st.session_state.api_key.strip():
         st.session_state.api_key = secret_key
 
-    api_key_input = st.text_input("Google Gemini API Key", value=st.session_state.api_key, type="password")
-    st.session_state.api_key = api_key_input
+    with st.expander("Configuración Avanzada", expanded=False):
+        api_key_input = st.text_input("Google Gemini API Key", value=st.session_state.api_key, type="password")
+        st.session_state.api_key = api_key_input
+        
     api_key = st.session_state.api_key
 
     st.markdown("---")
